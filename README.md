@@ -84,8 +84,6 @@
 | 8   | soil_temperature_7_to_28cm_mean   | 7-28cm土壤平均温度   |
 | 9   | soil_temperature_28_to_100cm_mean | 28-100cm土壤平均温度 |
 
-备注：
-1. 土壤平均
 
 ### 光照条件
 
