@@ -11,9 +11,7 @@ def request_openmeteo_api(latitude:list[str],
     The len(latitude) and len(longitude) entered must be equal.
     Latitude would be positive (negative) when a location is in the north (south) of the equator.
     Longitude would be positive (negative) when a location is in the east (west) of the prime meridian.
-
     The available parameters of daily_indicators please refer: https://open-meteo.com/en/docs/historical-weather-api
-
 }
 
     :param latitude:         [float, ...]
@@ -21,7 +19,7 @@ def request_openmeteo_api(latitude:list[str],
     :param start_date:       "YYYY-MM-DD"
     :param end_date:         "YYYY-MM-DD"
     :param daily_indicators: [String, ...]
-    :return:pd.DataFrame
+    :return:pd.DataFrame:    [[ "date", "latitude", "longitude", daily_indicators[0], ...]]
     '''
     # Setup the Open-Meteo API client with cache and retry on error
     cache_session = requests_cache.CachedSession('.cache', expire_after = -1)
