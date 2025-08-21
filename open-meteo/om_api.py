@@ -12,7 +12,6 @@ def request_openmeteo_api(latitude:list[str],
     Latitude would be positive (negative) when a location is in the north (south) of the equator.
     Longitude would be positive (negative) when a location is in the east (west) of the prime meridian.
     The available parameters of daily_indicators please refer: https://open-meteo.com/en/docs/historical-weather-api
-}
 
     :param latitude:         [float, ...]
     :param longitude:        [float, ...]
@@ -49,6 +48,7 @@ def request_openmeteo_api(latitude:list[str],
             inclusive = "left"
         )}
         # 维度列、经度列
+        daily_dic["LocationID"] = response.LocationId()
         daily_dic["latitude"] = response.Latitude()
         daily_dic["longitude"] = response.Longitude()
 
