@@ -111,7 +111,7 @@ def om_request_api(expire_after:int,
 
     return request_df
 
-def om_daily_history(latitude:list[str],
+def daily_history(latitude:list[str],
                      longitude:list[str],
                      start_date:str,
                      end_date:str,
@@ -124,7 +124,7 @@ def om_daily_history(latitude:list[str],
                                 daily_indicators)
     return history_df
 
-def om_daily_forecast(latitude:list[str],
+def daily_forecast(latitude:list[str],
                       longitude:list[str],
                       start_date:str,
                       end_date:str,
