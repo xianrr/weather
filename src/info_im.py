@@ -110,14 +110,12 @@ im_styles = [
         'column' : 'precip_ma7',
         'min_history_year' : 2024,
         'ylabel' : 'Precipitation (mm)',
-        'ylim' : (0, 26),
         'title' : 'Last 7 days Mean Precipitation of ',
         'path' : 'b_precip_ma7'
     },{ # 30日平均降水
         'column' : 'precip_ma30',
         'min_history_year' : 2024,
         'ylabel' : 'Precipitation (mm)',
-        'ylim' : (0, 26),
         'title' : 'Last 30 days Mean Precipitation of ',
         'path' : 'c_precip_ma30'
     },{ # 土壤墒情
@@ -125,13 +123,11 @@ im_styles = [
         'min_history_year' : 2022,
         'ylabel' : 'Soil Moisture (m³/m³)',
         'title' : 'Soil Moisture (28-100cm) of ',
-        'ylim' : (0.15, 0.55),
         'path' : 'd_soil_moisture'
     },{ # 5日平均气温
         'column' : 'temper_ma5',
         'min_history_year' : 2024,
         'ylabel' : 'Temperature (°C)',
-        'ylim' : (23.5, 29.5),
         'title' : 'Last 5 days Mean Temperature of ',
         'path' : 'e_temper_ma5'
     }

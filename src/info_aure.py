@@ -163,7 +163,7 @@ aure_styles = [
         'min_history_year' : 2024,
         'ylabel' : 'Precipitation (mm)',
         'title' : 'Last 7 days Sum Precipitation of ',
-        'path' : 'b_precip_ma7'
+        'path' : 'b_precip_sum7'
     },{ # 土壤墒情
         'column' : 'soil_moisture_7_to_28cm_mean',
         'min_history_year' : 2022,
@@ -175,7 +175,7 @@ aure_styles = [
         'min_history_year' : 2024,
         'ylabel' : 'Temperature (°C)',
         'title' : 'Mean Temperature of ',
-        'path' : 'd_temper_ma5'
+        'path' : 'd_temper'
     }
 ]
 
