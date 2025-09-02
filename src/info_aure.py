@@ -1,0 +1,163 @@
+au_cities = [
+    {
+        'code' : 'QLD',
+        'name' : 'Queensland',
+        'latitude' : [-22.38, -27.01, -28.14, -26.71, -23.78],
+        'longitude': [146.71, 150.43, 149.53, 151.80, 149.05]
+    },{
+        'code' : 'NSW',
+        'name' : 'New South Wales',
+        'latitude' : [-29.39, -29.48, -32.17, -35.14],
+        'longitude': [149.97, 147.82, 146.55, 146.18]
+    },{
+        'code' : 'VIC',
+        'name' : 'Victoria',
+        'latitude' : [-35.32, -34.71, -35.80, -36.25],
+        'longitude': [144.31, 141.95, 142.20, 143.69]
+    },{
+        'code' : 'SA',
+        'name' : 'South Australia',
+        'latitude' : [-33.55, -34.66, -32.77, -33.55],
+        'longitude': [135.24, 137.69, 138.16, 139.06]
+    },{
+        'code' : 'WA',
+        'name' : 'Western Australia',
+        'latitude' : [-33.36, -33.30, -33.76, -32.09],
+        'longitude': [123.34, 121.71, 118.78, 117.60]
+    },
+]
+
+eu_cities = [
+    {
+        'code': 'ES',
+        'name' : 'Spain',
+        'latitude' : [42.07, 40.92, 38.92, 41.83],
+        'longitude': [-5.56, -3.61, -2.94, -1.53]
+    },{
+        'code': 'FR',
+        'name' : 'France',
+        'latitude' : [46.09, 47.76, 47.34, 47.99, 49.49, 50.05],
+        'longitude': [-0.54, -1.20,  2.03,  4.07,  4.61,  2.74]
+    },{
+        'code': 'DE',
+        'name' : 'Germany',
+        'latitude' : [50.58, 51.83, 53.12, 53.27, 49.73, 48.35],
+        'longitude': [ 6.97,  7.72,  9.67, 12.74, 10.62, 10.74]
+    },{
+        'code': 'PL',
+        'name' : 'Poland',
+        'latitude' : [51.24, 51.19, 52.94, 53.32, 51.47],
+        'longitude': [15.56, 17.59, 17.42, 19.91, 22.90]
+    },{
+        'code': 'RO',
+        'name' : 'Romania',
+        'latitude' : [46.05, 45.53, 47.68, 46.32, 45.19, 45.16],
+        'longitude': [21.11, 22.23, 26.09, 26.62, 25.26, 27.80]
+    }
+]
+
+ru_cities = [
+    {
+        'code': 'ROS',
+        'name' : 'Rostov',
+        'latitude' : [47.64, 48.79, 47.86, 46.75, 46.26],
+        'longitude': [39.37, 40.80, 42.07, 43.35, 41.33]
+    },{
+        'code': 'BEL',
+        'name' : 'Belgorod',
+        'latitude' : [50.78, 50.58, 50.18, 51.23],
+        'longitude': [35.71, 37.29, 38.86, 37.72]
+    },{
+        'code': 'SAR',
+        'name' : 'Saratov',
+        'latitude' : [51.92, 52.12, 52.33, 50.95, 51.59],
+        'longitude': [43.02, 45.43, 47.73, 46.52, 49.60]
+    },{
+        'code': 'ALT',
+        'name' : 'Altai',
+        'latitude' : [53.23, 53.75, 52.04, 51.48, 52.09],
+        'longitude': [78.72, 83.08, 81.35, 82.83, 85.20]
+    },{
+        'code': 'STA',
+        'name' : 'Stavropol',
+        'latitude' : [45.89, 45.04, 44.60, 44.54],
+        'longitude': [43.06, 45.14, 43.33, 41.98]
+    },
+]
+
+51.61, 51.56, 50.89, 51.35
+50.36, 49.63, 49.97, 50.47, 50.78
+48.86, 48.35, 48.3, 49.16
+48.19, 47.96, 49, 48.36
+49.74, 49.52, 49.9, 50.21
+45.89, 46.24, 47.05, 47.37
+
+30.91, 32.55, 31.28, 31.88
+32.81, 32.95, 34.37, 35.14, 34.08
+27.97, 28.39, 29.02, 29.38
+35.03, 33.73, 35, 36.57
+35.71, 36.54, 37.48, 36.44
+29.07, 29.73, 30.95, 29.9
+
+
+ua_cities = [
+    {
+        'code' : 'CHE',
+        'name' : 'Chernihiv',
+        'latitude' : [],
+        'longitude': []
+    },{
+        'code' : 'PLT',
+        'name' : 'Poltava',
+        'latitude' : [],
+        'longitude': []
+    },{
+        'code' : 'VIN',
+        'name' : 'Vinnytsia',
+        'latitude' : [],
+        'longitude': []
+    },{
+        'code' : 'DNP',
+        'name' : 'Dnipropetrovsk',
+        'latitude' : [],
+        'longitude': []
+    },{
+        'code' : 'KHA',
+        'name' : 'Kharkiv',
+        'latitude' : [],
+        'longitude': []
+    },{
+        'code' : 'ODE',
+        'name' : 'Odesa',
+        'latitude' : [],
+        'longitude': []
+    }
+]
+
+
+countries = [
+    {
+        'code' : 'AU',
+        'name' : 'Australia',
+        'city_list' : au_cities
+    },{
+        'code' : 'EU',
+        'name' : 'Europe Union',
+        'city_list' : eu_cities
+    },{
+        'code' : 'RU',
+        'name' : 'Russia',
+        'city_list' : ru_cities
+    },{
+        'code' : 'UA',
+        'name' : 'Ukraine',
+        'city_list' : ua_cities
+    }
+]
+
+
+
+
+
+
+
