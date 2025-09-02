@@ -57,7 +57,7 @@ def daily_history(latitude:list[str],
                      start_date:str,
                      end_date:str,
                      daily_indicators:list[str]):
-    expire_after = 1200
+    expire_after = 600
     url = "https://archive-api.open-meteo.com/v1/archive"
     history_df = om_request_api(expire_after, url,
                                 latitude, longitude,

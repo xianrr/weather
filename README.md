@@ -72,17 +72,16 @@
 
 ### 土壤
 
-| 序号  | 气象指标                              | 中文含义           |
-| --- | --------------------------------- | -------------- |
-| 1   | soil_moisture_0_to_100cm_mean     | 0-100cm土壤平均湿度  |
-| 2   | soil_moisture_0_to_10cm_mean      | 0-10cm土壤平均湿度   |
-| 3   | soil_moisture_0_to_7cm_mean       | 0-7cm土壤平均湿度    |
-| 4   | soil_moisture_7_to_28cm_mean      | 7-28cm土壤平均湿度   |
-| 5   | soil_moisture_28_to_100cm_mean    | 28-100cm土壤平均湿度 |
-| 6   | soil_temperature_0_to_100cm_mean  | 0-100cm土壤平均温度  |
-| 7   | soil_temperature_0_to_7cm_mean    | 0-7cm土壤平均温度    |
-| 8   | soil_temperature_7_to_28cm_mean   | 7-28cm土壤平均温度   |
-| 9   | soil_temperature_28_to_100cm_mean | 28-100cm土壤平均温度 |
+| 序号 | 气象指标                              | 中文含义           |
+|----| --------------------------------- | -------------- |
+| 1  | soil_moisture_0_to_100cm_mean     | 0-100cm土壤平均湿度  |
+| 2  | soil_moisture_0_to_7cm_mean       | 0-7cm土壤平均湿度    |
+| 3  | soil_moisture_7_to_28cm_mean      | 7-28cm土壤平均湿度   |
+| 4  | soil_moisture_28_to_100cm_mean    | 28-100cm土壤平均湿度 |
+| 5  | soil_temperature_0_to_100cm_mean  | 0-100cm土壤平均温度  |
+| 6  | soil_temperature_0_to_7cm_mean    | 0-7cm土壤平均温度    |
+| 7  | soil_temperature_7_to_28cm_mean   | 7-28cm土壤平均温度   |
+| 8  | soil_temperature_28_to_100cm_mean | 28-100cm土壤平均温度 |
 
 
 ### 光照条件

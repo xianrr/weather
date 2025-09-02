@@ -44,44 +44,46 @@ def day_annul_plot(df:pd.DataFrame, column:str, **kwargs):
 
     df_history = df[ df['year'] != this_year ]
 
-    # 一、对历史数据展开分析
-    # 1.1 均值
-    average = df_history.groupby('day_of_year')[column].mean().reset_index()
-    # 1.2 区间：分位数（上分位、下分位）
-    quantiles = df_history.groupby('day_of_year')[column].quantile([0.05, 0.95])
-    quantiles = quantiles.unstack().reset_index()
-    # 1.3 区间：正态分布（概率区间）
-    # 待完善
+    if len(df_history) != 0:
+        # 一、对历史数据展开分析
+        # 1.1 均值
+        average = df_history.groupby('day_of_year')[column].mean().reset_index()
+        # 1.2 区间：分位数（上分位、下分位）
+        quantiles = df_history.groupby('day_of_year')[column].quantile([0.05, 0.95])
+        quantiles = quantiles.unstack().reset_index()
+        # 1.3 区间：正态分布（概率区间）
+        # 待完善
 
     # 二、可视化
     # 2.1 尺寸
-    fig = plt.figure(figsize=(7.5, 4.5))
+    fig = plt.figure(figsize=(8, 4.8))
 
+    if len(df_history) != 0:
     # 2.2.1 绘图：区间
-    plt.fill_between(quantiles['day_of_year'],
-                     quantiles[0.05],
-                     quantiles[0.95],
-                     color='skyblue',
-                     alpha= 0.4,
-                     label='5%-95%')
+        plt.fill_between(quantiles['day_of_year'],
+                         quantiles[0.05],
+                         quantiles[0.95],
+                         color='skyblue',
+                         alpha= 0.4,
+                         label='5%-95%')
 
     # 2.2.2 绘图：平均值
-    plt.plot(average['day_of_year'],
-             average[column],
-             "k--",
-             linewidth=1.2,
-             label=f'{len(years)}yr_average')
+        plt.plot(average['day_of_year'],
+                 average[column],
+                 "k--",
+                 linewidth=1.2,
+                 label=f'{len(years)}yr_average')
 
-    # 2.2.3 绘图：历史历年数据
-    if 'min_history_year' in kwargs:
-        years = years[ years >= kwargs['min_history_year'] ]
-    for year in years:
-            year_data = df_history[df_history['year'] == year]
-            plt.plot(year_data['day_of_year'],
-                     year_data[column],
-                     alpha=0.6,
-                     linewidth=1.2,
-                     label=year)
+        # 2.2.3 绘图：历史历年数据
+        if 'min_history_year' in kwargs:
+            years = years[ years >= kwargs['min_history_year'] ]
+        for year in years:
+                year_data = df_history[df_history['year'] == year]
+                plt.plot(year_data['day_of_year'],
+                         year_data[column],
+                         alpha=0.6,
+                         linewidth=1.2,
+                         label=year)
 
     # 2.2.4 绘图：今年数据（含预测）
     this_year_data = df[ (df['year'] == this_year) ]
@@ -92,7 +94,7 @@ def day_annul_plot(df:pd.DataFrame, column:str, **kwargs):
                  forecast_data[column],
                  alpha=1.0,
                  linewidth=1.5,
-                 linestyle = '--',
+                 linestyle = ':',
                  color='red')
     plt.plot(this_year_data['day_of_year'],
              this_year_data[column],
@@ -124,3 +126,21 @@ def day_annul_plot(df:pd.DataFrame, column:str, **kwargs):
     plt.tight_layout() # 自动调整
 
     return fig
+
+
+from PIL import Image
+def merge2grid(file_lists, row, col, output):
+
+
+    images = [Image.open(path) for path in file_lists]
+
+    img_width, img_height = images[0].size
+
+    grid_img = Image.new('RGB', (img_width * col, img_height * row))
+
+    for idx, img in enumerate(images):
+        r = idx // col
+        c = idx % col
+        grid_img.paste(img, (c * img_width, r * img_height))
+    #
+    grid_img.save(output)
