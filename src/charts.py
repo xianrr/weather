@@ -131,13 +131,9 @@ def day_annul_plot(df:pd.DataFrame, column:str, **kwargs):
 from PIL import Image
 def merge2grid(file_lists, row, col, output):
 
-
     images = [Image.open(path) for path in file_lists]
-
     img_width, img_height = images[0].size
-
     grid_img = Image.new('RGB', (img_width * col, img_height * row))
-
     for idx, img in enumerate(images):
         r = idx // col
         c = idx % col
