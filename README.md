@@ -26,10 +26,11 @@
 ```mermaid
 flowchart LR
 id1(config.py)
-id2(om_ai.py)
+id2(om_api.py)
 id3(history_saver.py)
 id4(weather.ipynb)
 id5(.csv)
+id8(charts.py)
 id6(chart_builder.py)
 id7(.jpg)
 id1 --> id4
@@ -39,6 +40,7 @@ id4 --> id5
 id1 --> id6
 id2 --> id6
 id5 --> id6
+id8 --> id6
 id6 --> id7
 ```
 
@@ -116,7 +118,7 @@ city_list = [
 
 ### 属性 `daily_indicators`
 
-见 [open_meteo_indicator](./src/open_meteo_indicator.md) 或官方文档
+见 [open_meteo_indicator](src/OPEN-METEO-INDICATOR.md) 或官方文档
 
 ### 属性 `styles`
 
