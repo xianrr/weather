@@ -1,7 +1,7 @@
 import pandas as pd
 from src import charts, om_api
 import matplotlib.pyplot as plt
-def with_forecast(countries, api_start_date, api_end_date, forecast_start_date, forecast_end_date, daily_indicators, config):
+def with_forecast(countries, api_start_date, api_end_date, forecast_start_date, forecast_end_date, daily_indicators, config, **kwargs):
 
     for country in countries:
 
@@ -11,6 +11,10 @@ def with_forecast(countries, api_start_date, api_end_date, forecast_start_date, 
             df = pd.read_csv(path)
             csv_df = pd.concat([csv_df, df])
         csv_df['date'] = pd.to_datetime(csv_df['date'])
+        if 'csv_start_date' in kwargs:
+            csv_df = csv_df[csv_df['date'] >= kwargs['csv_start_date']]
+        if 'csv_end_date' in kwargs:
+            csv_df = csv_df[csv_df['date'] <= kwargs['csv_end_date']]
 
         for city in country['city_list']:
             # 读取 CSV 历史数据（特定城市）
