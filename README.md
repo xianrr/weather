@@ -44,14 +44,15 @@ id8 --> id6
 id6 --> id7
 ```
 
-## `config` 文件配置规范
+## `config.py` 文件配置规范
 
-- 属性
-  - `countries`
-  - `daily_indicators`
-  - `styles`
-- 方法
-  - `data_prapare()`
+- `config.py` 需要包含的内容
+  - 属性
+    - `countries`
+    - `daily_indicators`
+    - `styles`
+  - 方法
+    - `data_prapare()`
 
 ### 属性 `countries`
 
