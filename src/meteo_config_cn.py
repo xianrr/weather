@@ -26,7 +26,7 @@ cn_cities = [
         'longitude': [116.71, 115.43, 118.12, 116.43]
     },{
         'code' : '(6)HE',
-        'name' : 'Heibei',
+        'name' : 'Hebei',
         'latitude' : [ 37.94,  36.59,  36.98,  37.78],
         'longitude': [114.80, 114.63, 114.63, 115.56]
     },{
@@ -52,11 +52,11 @@ countries = [
 ]
 
 
-cn_daily_indicators = ["temperature_2m_mean",
-                       "precipitation_sum",
-                       "soil_moisture_7_to_28cm_mean"]
+daily_indicators = ["temperature_2m_mean",
+                    "precipitation_sum",
+                    "soil_moisture_7_to_28cm_mean"]
 
-cn_styles = [
+styles = [
     { # 累计降水
         'column' : 'cum_precip',
         'min_history_year' : 2022,
@@ -80,12 +80,35 @@ cn_styles = [
         'min_history_year' : 2024,
         'ylabel' : 'Temperature (°C)',
         'title' : 'Mean Temperature of ',
-        'path' : 'd_Mean_Temper'
+        'path' : 'd_mean_temper'
     },{ # 积温
         'column' : 'degree_day',
         'min_history_year' : 2024,
         'ylabel' : 'Degree Day (°C)',
+        'xlim' : (105, 260),
         'title' : 'Degree Day after 15th Apr. of ',
-        'path' : 'e_Degree_Day'
+        'path' : 'e_degree_day'
     }
 ]
+
+
+import pandas as pd
+def data_prapare(df):
+    # 统一处理
+    df = df.copy()
+    df['date'] = pd.to_datetime(df['date'], errors='coerce')
+    df['year'] = df['date'].dt.year
+    df['day_of_year'] = df['date'].dt.dayofyear
+    df = df[df['day_of_year'] <= 365]
+
+    # 个性化处理
+    df['cum_precip'] = df.groupby('year')['precipitation_sum'].cumsum()
+    df['precip_sum7'] = df['precipitation_sum'].rolling(window=7, min_periods=1).sum()
+    # 积温
+    df = df.assign(t=0.0)
+    mask = (df['day_of_year'] > 105) & (df['temperature_2m_mean'] >= 10)
+    df.loc[mask, 't'] = df.loc[mask, 'temperature_2m_mean']
+    df.loc[:, 'degree_day'] = df.groupby('year')['t'].cumsum()
+    df.drop(columns = ['t'], inplace = True)
+
+    return df

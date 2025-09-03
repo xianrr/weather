@@ -146,12 +146,11 @@ countries = [
 
 
 # 获取的天气指标
-aure_daily_indicators = ["temperature_2m_mean",
-                         "precipitation_sum",
-                         "soil_moisture_7_to_28cm_mean"]
+daily_indicators = ["temperature_2m_mean",
+                    "precipitation_sum",
+                    "soil_moisture_7_to_28cm_mean"]
 
-
-aure_styles = [
+styles = [
     {   # 累计降水
         'column' : 'cum_precip',
         'min_history_year' : 2022,
@@ -181,13 +180,14 @@ aure_styles = [
 
 import pandas as pd
 def data_prapare(df):
-    # 数据准备
+    # 统一处理
     df = df.copy()
     df['date'] = pd.to_datetime(df['date'], errors='coerce')
     df['year'] = df['date'].dt.year
     df['day_of_year'] = df['date'].dt.dayofyear
     df = df[df['day_of_year'] <= 365]
-    # 累计降水
+
+    # 个性化处理
     df['cum_precip']= df.groupby('year')['precipitation_sum'].cumsum()
     # 7日累计降水
     df['precip_sum7'] = df['precipitation_sum'].rolling(window=7, min_periods=1).sum()

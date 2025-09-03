@@ -40,7 +40,6 @@ def day_annul_plot(df:pd.DataFrame, column:str, **kwargs):
     years = df['year'].unique()
     this_year = years.max()
     years = years[years < this_year]
-    # this_year = 2025
 
     df_history = df[ df['year'] != this_year ]
 

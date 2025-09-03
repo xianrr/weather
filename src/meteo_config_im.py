@@ -95,11 +95,11 @@ countries = [
 ]
 
 # 获取的天气指标
-im_daily_indicators = ["temperature_2m_mean",
-                          "precipitation_sum",
-                          "soil_moisture_28_to_100cm_mean"]
+daily_indicators = ["temperature_2m_mean",
+                    "precipitation_sum",
+                    "soil_moisture_28_to_100cm_mean"]
 
-im_styles = [
+styles = [
     { # 累计降水
         'column' : 'cum_precip',
         'min_history_year' : 2022,
@@ -136,12 +136,17 @@ im_styles = [
 
 import pandas as pd
 def data_prapare(df):
+    # 统一处理
+    df = df.copy()
     df['date'] = pd.to_datetime(df['date'], errors='coerce')
     df['year'] = df['date'].dt.year
     df['day_of_year'] = df['date'].dt.dayofyear
+    df = df[df['day_of_year'] <= 365]
+
+    # 个性化处理
     df['cum_precip'] = df.groupby('year')['precipitation_sum'].cumsum()
     df['precip_ma7'] = df['precipitation_sum'].rolling(window=7, min_periods=1).mean()
     df['precip_ma30'] = df['precipitation_sum'].rolling(window=30, min_periods=1).mean()
     df['temper_ma5'] =  df['temperature_2m_mean'].rolling(window=5, min_periods=1).mean()
-    df = df[df['day_of_year'] <= 365]
+
     return df
