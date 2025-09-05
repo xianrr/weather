@@ -147,8 +147,8 @@ countries = [
 
 # 获取的天气指标
 daily_indicators = ["temperature_2m_mean",
-                    "precipitation_sum",
-                    "soil_moisture_7_to_28cm_mean"]
+                    "precipitation_sum"]
+                    # "soil_moisture_7_to_28cm_mean"]
 
 styles = [
     {   # 累计降水
@@ -163,12 +163,12 @@ styles = [
         'ylabel' : 'Precipitation (mm)',
         'title' : 'Last 7 days Sum Precipitation of ',
         'path' : 'b_precip_sum7'
-    },{ # 土壤墒情
-        'column' : 'soil_moisture_7_to_28cm_mean',
-        'min_history_year' : 2022,
-        'ylabel' : 'Soil Moisture (m³/m³)',
-        'title' : 'Soil Moisture (7-28cm) of ',
-        'path' : 'c_soil_moisture'
+    # },{ # 土壤墒情
+    #     'column' : 'soil_moisture_7_to_28cm_mean',
+    #     'min_history_year' : 2022,
+    #     'ylabel' : 'Soil Moisture (m³/m³)',
+    #     'title' : 'Soil Moisture (7-28cm) of ',
+    #     'path' : 'c_soil_moisture'
     },{ # 平均气温
         'column' : 'temperature_2m_mean',
         'min_history_year' : 2024,
