@@ -51,6 +51,12 @@ def day_annul_plot(df:pd.DataFrame, column:str, **kwargs):
         quantiles = df_history.groupby('day_of_year')[column].quantile([0.05, 0.95])
         quantiles = quantiles.unstack().reset_index()
         # 1.3 区间：正态分布（概率区间）
+        # str = df_history.groupby('day_of_year')[column].agg('std').reset_index()
+        # str = str.rename(columns={column: 'str'})
+        # test = pd.merge(average, str, on='day_of_year', how='left')
+        # test
+        # test['max'] = test[column]+ 1.7*test['str']
+        # test['min'] = test[column]- 1.7*test['str']
         # 待完善
 
     # 二、可视化
@@ -65,6 +71,20 @@ def day_annul_plot(df:pd.DataFrame, column:str, **kwargs):
                          color='skyblue',
                          alpha= 0.4,
                          label='5%-95%')
+        # if 'std' in kwargs:
+        #     plt.fill_between(test['day_of_year'],
+        #                      test['min'],
+        #                      test['max'],
+        #                      color='skyblue',
+        #                      alpha= 0.4,
+        #                      label='std')
+        # else:
+        #     plt.fill_between(quantiles['day_of_year'],
+        #                      quantiles[0.05],
+        #                      quantiles[0.95],
+        #                      color='skyblue',
+        #                      alpha= 0.4,
+        #                      label='5%-95%')
 
     # 2.2.2 绘图：平均值
         plt.plot(average['day_of_year'],

@@ -20,7 +20,6 @@
     - `weather_charts_builder.py` 批量图表绘制
   - `weather_xx.ipynb` 数据加工代码
 
-
 ## 文件依赖关系
 
 ```mermaid
@@ -28,7 +27,7 @@ flowchart LR
 id1(config.py)
 id2(om_api.py)
 id3(history_saver.py)
-id4(weather.ipynb)
+id4(history_saver.ipynb)
 id5(.csv)
 id8(charts.py)
 id6(chart_builder.py)
@@ -44,7 +43,37 @@ id8 --> id6
 id6 --> id7
 ```
 
-# 
+
+## 现成代码的使用方式
+
+（以中国天气为例）
+
+### 确保以下目录及文件完整
+
+- `dataset`
+  - `CN_2014-2024.csv`
+  - `CN_202501-202508.csv`
+- `diagram`
+  - `CN`
+  - `grid`
+- `src`
+  - `chart.py`
+  - `meteo_config_cn.py`
+  - `om_api.py`
+  - `weather_charts_builder.py`
+  - `weather_history_saver.py`
+- `weather_cn.ipynb`
+
+### 按需运行 `weather_cn.ipynb` 文件
+
+该文件实现的功能：
+
+1. 生成天气图表（控制 4 个参数：未存档数据、预测数据的起始、终止日期）
+2. 合并大图
+3. 历史数据存档（控制 3 个参数：计划存档数据的起始、终止日期，文件后缀名）
+4. 数据存档合并（控制 2 个参数：待合并文件名后缀列表，新文件后缀名）
+
+
 
 
 ## `config.py` 文件配置规范
