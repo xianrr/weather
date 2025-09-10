@@ -24,6 +24,24 @@
 
 ```mermaid
 flowchart LR
+id1(配置信息)
+id2(API 请求工具)
+id3(历史数据保存工具)
+id4(天气加工分析工具)
+id5(明细数据.xlsx)
+id8(图表加工工具)
+id7(可视化图表.jpg)
+id1 --> id4
+id2 --> id4
+id3 --> id4
+id4 --> id5
+id4 --> id7
+id8 --> id4 
+```
+
+
+```mermaid
+flowchart LR
 id1(config.py)
 id2(om_api.py)
 id3(history_saver.py)
