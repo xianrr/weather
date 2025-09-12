@@ -22,27 +22,10 @@
 
 ## 文件依赖关系
 
-```mermaid
-flowchart LR
-id1(配置信息)
-id2(数据整合工具)
-id3(历史数据分析工具)
-id4(天气加工分析工具)
-id5(明细数据.xlsx)
-id8(图表加工工具)
-id7(可视化图表.jpg)
-id1 --> id4
-id2 --> id4
-id3 --> id4
-id4 --> id5
-id4 --> id7
-id8 --> id4 
-```
-
 
 ```mermaid
 flowchart LR
-id1(config.py)
+id1(meteo_config_xx.py)
 id2(om_api.py)
 id3(history_saver.py)
 id4(history_saver.ipynb)
@@ -60,21 +43,9 @@ id5 --> id6
 id8 --> id6
 id6 --> id7
 ```
-```mermaid
-flowchart TB
 
-id1 --> id2  --> id3   --> id4 --> id5 --> id6
-id5  --重复该过程--> id3
 
-id1(打开「天气数据底稿」)
-id2(路透插件更新天气数据)
-id3(找到城市数据页签)
-id4(拷贝新数据至「制图模板」)
-id5(更新图表至「PPT」)
-id6(完成天气观点)
-```
-
-## 现成代码的使用方式
+## 现有天气加工代码使用方式
 
 （以中国天气为例）
 
@@ -102,6 +73,70 @@ id6(完成天气观点)
 2. 合并大图
 3. 历史数据存档（控制 3 个参数：计划存档数据的起始、终止日期，文件后缀名）
 4. 数据存档合并（控制 2 个参数：待合并文件名后缀列表，新文件后缀名）
+
+
+## 增加新的天气分析
+
+1. 新建配置文件 `meteo_config_xx.py` 配置方法见章节《`config.py` 文件配置规范》
+2. 拷贝任意一个 `weather_xx.ipynb` 
+   1. 更改所有的 `from src import meteo_config_xx as config`
+   2. 运行「历史数据存档」代码保存历史数据
+   3. （按需）运行「数据存档合并」合并数据并手动删除非必要数据
+   4. 根据实际保存的历史数据，维护「生成天气图表」中的历史数据文件的路径
+3. 参照章节《现有天气加工代码使用方式》运行、使用
+
+
+## 文件输入、输出路径影响方式
+
+### 数据集文件
+
+- 示例：`dataset/AR_2015-2024.csv`
+- 构成：
+  - `dataset/` 写入模块上的固定值
+  - `AR` 取值自「配置文件」中 `contury['code']`
+  - `2015-2024`「保存历史数据」、「合并历史数据」的入参
+- 写入相关模块
+  - 保存历史数据 `src/weather_history_saver.py` 的 `all_df.to_csv('path')`
+  - 合并历史数据的 `out_df.to_csv('path')`
+- 读取相关模块
+  - 生成天气图表的 `# 存档的历史数据` 下方的内容
+  - 合并历史数据的 `in_df = pd.read_csv('path')`
+
+### 数据集文件内容
+
+- 示例
+  - 文件 `dataset/AR_2015-2024.csv`
+  - 日期列名 `date` 为固定值，内容为API具体返回值
+  - 指标列名 `temperature_2m_mean` 等取自配置文件的 `daily_indicators`，内容为API具体返回值
+  - 名称列名 `name` 为固定值，内容为`contury['name']`
+- 写入相关模块同上
+
+### 图表文件
+
+- 示例：`diagram/CN/CN(1)HL_a_cum_precip.jpg`
+- 构成
+  - `diagram/` 写入模块上的固定值
+  - `CN/CN` 取值自「配置文件」中 `contury['code']`
+  - `(1)HL_` 取值自「配置文件」中 `city['code']`
+  - `a_cum_precip` 取值自「配置文件」中 `style['path']`
+- 写入相关模块：由 `src/weather_charts_builder.py` 的 `chart.savefig(path)` 控制
+- 读取相关模块：合并大图
+
+
+### 图表文件内容
+
+- 示例：
+  - 标题：`Cumulative Annual Precipitation of Heilongjiang`
+  - y轴标签：`Precipitation (mm)`
+- 构成
+  - `Cumulative Annual Precipitation of ` 取值自「配置文件」中 `style['title']`
+  - `Heilongjiang` 取值自「配置文件」中 `city['name']`
+  - `Precipitation (mm)` 取值自「配置文件」中 `style['ylabel']`
+- 写入相关模块
+  - `src/weather_charts_builder.py`
+  - 标题 `'title' : style['title'] + city['name'] +', ' + country['name']`
+  - y轴标签 `'ylabel': style['ylabel']`
+
 
 
 
