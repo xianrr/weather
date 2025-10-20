@@ -15,7 +15,7 @@ id_cities = [
     },{
         'code' : '(3)KT',
         'name' : 'Central Kalimantan',
-        'title_tag' : '(#2 12%)',
+        'title_tag' : '(#3 12%)',
         'latitude' : [ -2.37,  -2.38,  -3.36],
         'longitude': [111.79, 112.74, 113.77]
     },{
