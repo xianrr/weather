@@ -52,8 +52,8 @@ id7(.jpg)
 id1 --config--> id4
 id2 --> id4
 id4 --archive--> id1
-id8 --> id4
-id4 --> id7
+id4 --> id8
+id8 --> id7
 ```
 
 - 所有信息都存储在 `data/om_xx.db` 文件中：

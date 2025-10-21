@@ -1,5 +1,5 @@
 import pandas as pd
-from src import om_api
+from v01.src import om_api
 
 def save(countries, start_date, end_date, daily_indicators, tail_of_file):
     for country in countries:

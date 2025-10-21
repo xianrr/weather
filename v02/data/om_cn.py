@@ -1,7 +1,7 @@
 import os
 import sqlite3
 import pandas as pd
-from src import om_api
+from v02.src import om_api
 from datetime import datetime, timedelta
 
 # 数据库路径
